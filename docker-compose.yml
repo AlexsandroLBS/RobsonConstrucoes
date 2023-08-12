@@ -13,16 +13,16 @@ services:
     depends_on:
       - db
 
-  # web:
-  #   build: ./front/front-robson-construcoes/
-  #   container_name: web-app
-  #   volumes:
-  #     - './front/front-robson-construcoes:/usr/src/app'
-  #   ports:
-  #     - "4200:4200"
+  web:
+    build: ./front/front-robson-construcoes/
+    container_name: web-app
+    volumes:
+      - './front/front-robson-construcoes:/usr/src/app'
+    ports:
+      - "4200:4200"
 
-  #   depends_on:
-  #     - api
+    depends_on:
+      - api
 
 
   db:
