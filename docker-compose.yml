@@ -14,10 +14,10 @@ services:
       - db
 
   # web:
-  #   build: ./front-robson-construcoes/
+  #   build: ./front/front-robson-construcoes/
   #   container_name: web-app
   #   volumes:
-  #     - './front-robson-construcoes:/usr/src/app'
+  #     - './front/front-robson-construcoes:/usr/src/app'
   #   ports:
   #     - "4200:4200"
 

@@ -1,0 +1,61 @@
+<main>
+  <header>
+    <nav>
+      <div class="nav-itens">
+        <div class="logo"><img src = "../../../assets/construcao.png" alt="My Happy SVG"/><h5 style="margin-left: 6.25px; margin-bottom: 0px;color: #444444;"><b>Robson Construções</b> </h5></div>
+        <div class="actions" >
+          <button class="new-role" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightRole" aria-controls="offcanvasRightRole">
+            Criar Cargo
+          </button>
+          <button class="new-employee"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightEmployee" aria-controls="offcanvasRightEmployee">
+            Novo Funcionário
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="table-content">
+    <div class="role-dropdown">
+      <label for="roles">Filtrar por cargo:</label>
+      <select name="roles" id="roles" (change)="showData($event.target)">
+        <option value= "" selected>Todos os cargos</option>
+        <option *ngFor="let role of roles" [value]="role.id">{{ role.id - 1 }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="table-content">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cargo</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="filteredData.length">
+
+        <tr *ngFor="let emp of filteredData">
+          <th scope="row">{{emp.codigo}}</th>
+          <td>{{emp.nome}}</td>
+          <td>{{emp.cargo -1}}</td>
+          <td><button (click)="deleteEmployee(emp.codigo)"><img  class="delete-icon" src="../../../assets/lixeira.png" alt="delete-button"></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!filteredData.length" class="no-data-table">
+      <b>Não há funcionário com esse cargo.</b>
+  </div>
+  <div *ngIf="filteredData.length" class="table-content">
+    <div class="total-salary">
+      <p>Salário total:</p>
+      <b>{{salarySum}}</b>
+    </div>
+  </div>
+
+
+  <app-new-role (reloadData)="reloadTable($event)"></app-new-role>
+  <app-new-employee [roles]="roles" (reloadData)="reloadTable($event)"></app-new-employee>
+</main>

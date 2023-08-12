@@ -1,0 +1,96 @@
+.offcanvas{
+  width: 500px;
+}
+.form-input{
+  display: flex;
+  flex-direction: column;
+}
+span{
+  color: red;
+}
+.red-input{
+  border: solid 1px red !important;
+}
+.role-input{
+  display: flex;
+  flex-direction: column;
+}
+
+select{
+  width: 200px;
+  height: 40px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+input{
+  width: 200px;
+  height: 40px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+label{
+  font-size: 20px;
+}
+
+.modal-footer{
+  padding-left: 20px;
+  display: block;
+  width: 400px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.action-buttons{
+  width: 400px;
+
+  display: flex;
+  justify-content: space-between;
+  button{
+    width: 180px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    }
+}
+
+#cancelar-btn{
+  border: solid 1px black;
+  background-color: white;
+  color: #000;
+  }
+
+#confirm-btn{
+  background-color: #000;
+  color: white;
+  }
+
+#cancelar-btn:hover{
+  background-color: #4f5050;
+  color: #000;
+  }
+
+#confirm-btn:hover{
+  background-color: #000;
+  color: white;
+  }
+
+#cancelar-btn:disabled{
+  background-color: #707070;
+  color: #000;
+  }
+
+#confirm-btn:disabled{
+  background-color: #a5a5a5;
+  color: white;
+  }
+
+
+  @media (max-width: "425px"){
+    .action-buttons{
+      width: 290px;
+      gap: 20px;
+    }
+  }

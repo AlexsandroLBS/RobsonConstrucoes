@@ -1,0 +1,22 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightRole" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="form-input">
+        <label for="codigo">Salário do novo cargo:</label>
+        <input [(ngModel)]="salario" type="number" id="codigo" name="codigo" required>
+        <br>
+      </div>
+
+
+    </form>
+    <div class="action-buttons">
+      <button id="cancelar-btn" data-bs-dismiss="modal" (click)="reloadTable()" data-bs-dismiss="offcanvas"><b>Cancelar</b> </button>
+      <button id="confirm-btn" data-bs-dismiss="modal" (click)="save()" [disabled]="!salario || salario == 0" data-bs-dismiss="offcanvas">Confirmar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="offcanvasEnabled" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightEmployee" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h3 id="offcanvasRightLabel">Novo funcionário</h3>
+  </div>
+  <div class="offcanvas-body">
+    <form>
+
+      <div class="form-input">
+        <label for="codigo">Código do funcionário:</label>
+        <input [ngClass]="{'red-input': employeeExists}" [(ngModel)]="codEmployee" type="number" id="codigo" name="codigo" required (change)="verifyExists(codEmployee)">
+        <span *ngIf="employeeExists">Já existe um funcionário com esse código</span>
+        <br>
+      </div>
+
+      <div class="form-input">
+        <label for="nome">Nome:</label>
+        <input [(ngModel)]="nome" type="text" id="nome" name="nome" required>
+        <br>
+      </div>
+
+
+      <div class="role-input">
+        <label for="role">Cargo:</label>
+        <select name="role" [(ngModel)]="selectedRole">
+          <option value="-1">Escolha o cargo</option>
+          <option value="{{role.id}}" *ngFor="let role of roles">{{role.id - 1}}</option>
+        </select>
+        <br>
+      </div>
+    </form>
+    <div class="action-buttons">
+      <button id="cancelar-btn" data-bs-dismiss="modal" (click)="reloadTable()" data-bs-dismiss="offcanvas"><b>Cancelar</b> </button>
+      <button id="confirm-btn" data-bs-dismiss="modal" (click)="save()" [disabled]="employeeExists || !nome || selectedRole == -1" data-bs-dismiss="offcanvas">Confirmar</button>
+    </div>
+  </div>
+
+</div>
