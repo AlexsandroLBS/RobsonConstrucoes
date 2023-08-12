@@ -1,0 +1,49 @@
+
+version: '3.7'
+
+services:
+  
+  api:
+    build: ./api/
+    container_name: api
+    volumes:
+      - app:/django_robson_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  # web:
+  #   build: ./front-robson-construcoes/
+  #   container_name: web-app
+  #   volumes:
+  #     - './front-robson-construcoes:/usr/src/app'
+  #   ports:
+  #     - "4200:4200"
+
+  #   depends_on:
+  #     - api
+
+
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: always
+
+    environment:
+        POSTGRES_DB: robsonDb
+        POSTGRES_USER: robsonUser
+        POSTGRES_PASSWORD: robson123
+        DB_HOST: localhost
+        DB_PORT: 5432
+        PG_ICU_VERSION: 2.36
+    ports:
+      - 5432:5432
+    
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./api/db/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+volumes:
+  pg-data:
+  app:
